@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Taepyung Company Profile - 07</title>
+
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    :root {
+      --green: #387040;
+      --light-green: #70C088;
+      --cream: #F7F5EF;
+      --black: #111111;
+      --gray: #777777;
+      --line: rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+      background: #d9d9d9;
+      color: var(--black);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      position: relative;
+      width: 297mm;
+      height: 210mm;
+      margin: 0 auto;
+      padding: 20mm 22mm 16mm;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 14mm;
+      margin-bottom: 18mm;
+    }
+
+    .logo-area {
+      width: 42mm;
+      height: 12mm;
+      border: 1px dashed rgba(56, 112, 64, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .logo-area img {
+      width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .doc-label {
+      padding-top: 1mm;
+      font-size: 8px;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    /* Main Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 20mm;
+      height: 128mm;
+    }
+
+    .left,
+    .right {
+      min-width: 0;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 8.5px;
+      line-height: 1;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 9mm;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: -0.065em;
+      font-weight: 760;
+    }
+
+    .lead {
+      margin-top: 12mm;
+      max-width: 82mm;
+      font-size: 13px;
+      line-height: 1.85;
+      letter-spacing: -0.035em;
+      color: #222;
+      word-break: keep-all;
+    }
+
+    /* Bottom Summary */
+    .summary-box {
+      width: 82mm;
+      border-top: 1.5px solid var(--green);
+      padding-top: 5.5mm;
+    }
+
+    .summary-title {
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--green);
+      font-weight: 780;
+      margin-bottom: 4mm;
+    }
+
+    .summary-text {
+      max-width: 70mm;
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* Product Grid */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5mm;
+      height: 100%;
+    }
+
+    .product-card {
+      position: relative;
+      min-height: 61mm;
+      padding: 6mm;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .product-card.primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .product-image {
+      height: 24mm;
+      margin-bottom: 6mm;
+      background: rgba(56, 112, 64, 0.09);
+      border: 1px solid rgba(56, 112, 64, 0.14);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7px;
+      letter-spacing: 0.14em;
+      color: rgba(56, 112, 64, 0.66);
+      text-transform: uppercase;
+      overflow: hidden;
+    }
+
+    .product-card.primary .product-image {
+      background: rgba(255, 255, 255, 0.14);
+      border-color: rgba(255, 255, 255, 0.24);
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-index {
+      font-size: 7.5px;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 3mm;
+    }
+
+    .product-card.primary .product-index {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .product-title {
+      margin: 0 0 4mm;
+      font-size: 15.5px;
+      line-height: 1.22;
+      letter-spacing: -0.055em;
+      font-weight: 760;
+      word-break: keep-all;
+    }
+
+    .product-desc {
+      margin: 0;
+      font-size: 9.4px;
+      line-height: 1.65;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    .product-card.primary .product-desc {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .product-tag {
+      margin-top: 5mm;
+      padding-top: 3mm;
+      border-top: 1px solid rgba(56, 112, 64, 0.18);
+      font-size: 7.5px;
+      line-height: 1;
+      letter-spacing: 0.14em;
+      color: rgba(56, 112, 64, 0.78);
+      text-transform: uppercase;
+      font-weight: 750;
+    }
+
+    .product-card.primary .product-tag {
+      border-top-color: rgba(255, 255, 255, 0.24);
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      left: 22mm;
+      right: 22mm;
+      bottom: 9mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 7.5px;
+      line-height: 1.45;
+      color: var(--gray);
+    }
+
+    .footer-logo {
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--green);
+    }
+
+    .page-no {
+      letter-spacing: 0.08em;
+      color: rgba(56, 112, 64, 0.65);
+    }
+
+    @media print {
+      html,
+      body {
+        width: 297mm;
+        height: 210mm;
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="page">
+
+    <header class="topbar">
+      <div class="logo-area">
+        LOGO
+        <!-- 로고 넣을 때 -->
+        <!-- <img src="assets/taepyung-logo-green.svg" alt="Taepyung"> -->
+      </div>
+
+      <div class="doc-label">
+        Company Profile<br />
+        Ver. 2025-V1
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <section class="left">
+        <div>
+          <div class="eyebrow">Product Lineup</div>
+
+          <h1>
+            일상과 산업 현장에<br />
+            필요한 위생지 제품을<br />
+            폭넓게 공급합니다
+          </h1>
+
+          <p class="lead">
+            태평제지는 가정용 생활 위생지부터 산업·상업 공간에서 사용하는
+            대용량 위생지까지 다양한 제품군을 제조하고 공급합니다.
+          </p>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-title">6 Lines</div>
+          <div class="summary-text">
+            두루마리 화장지, 미용티슈, 키친타올, 점보롤,
+            페이퍼타올, 물티슈까지 생활과 현장을 아우르는 제품군을 갖추고 있습니다.
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+
+        <div class="product-grid">
+
+          <div class="product-card primary">
+            <div>
+              <div class="product-image">
+                PRODUCT IMAGE
+                <!-- <img src="assets/roll-tissue.jpg" alt="두루마리 화장지"> -->
+              </div>
+
+              <div class="product-index">01</div>
+              <h3 class="product-title">두루마리 화장지</h3>
+              <p class="product-desc">
+                펄프 함유량이 많고 단단하며 길어 알뜰하게 사용할 수 있는 다목적 화장지입니다.
+              </p>
+            </div>
+
+            <div class="product-tag">Roll Tissue</div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-image">
+                PRODUCT IMAGE
+                <!-- <img src="assets/facial-tissue.jpg" alt="미용티슈"> -->
+              </div>
+
+              <div class="product-index">02</div>
+              <h3 class="product-title">미용티슈</h3>
+              <p class="product-desc">
+                천연펄프를 사용하여 먼지가 적고 표면이 부드러워 촉감이 우수한 제품입니다.
+              </p>
+            </div>
+
+            <div class="product-tag">Facial Tissue</div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-image">
+                PRODUCT IMAGE
+                <!-- <img src="assets/kitchen-towel.jpg" alt="키친타올"> -->
+              </div>
+
+              <div class="product-index">03</div>
+              <h3 class="product-title">키친타올</h3>
+              <p class="product-desc">
+                양면 엠보싱으로 흡수력과 부드러운 감촉을 갖춘 위생적인 주방 제품입니다.
+              </p>
+            </div>
+
+            <div class="product-tag">Kitchen Towel</div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-image">
+                PRODUCT IMAGE
+                <!-- <img src="assets/jumbo-roll.jpg" alt="점보롤"> -->
+              </div>
+
+              <div class="product-index">04</div>
+              <h3 class="product-title">점보롤</h3>
+              <p class="product-desc">
+                대용량으로 감겨 있어 청소와 관리에 용이하며 위생적으로 보관할 수 있습니다.
+              </p>
+            </div>
+
+            <div class="product-tag">Jumbo Roll</div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-image">
+                PRODUCT IMAGE
+                <!-- <img src="assets/paper-towel.jpg" alt="페이퍼타올"> -->
+              </div>
+
+              <div class="product-index">05</div>
+              <h3 class="product-title">페이퍼타올</h3>
+              <p class="product-desc">
+                타올의 두께와 흡수력이 뛰어나며 위생 관리가 필요한 공간에 적합한 제품입니다.
+              </p>
+            </div>
+
+            <div class="product-tag">Paper Towel</div>
+          </div>
+
+          <div class="product-card">
+            <div>
+              <div class="product-image">
+                PRODUCT IMAGE
+                <!-- <img src="assets/wet-tissue.jpg" alt="물티슈"> -->
+              </div>
+
+              <div class="product-index">06</div>
+              <h3 class="product-title">물티슈</h3>
+              <p class="product-desc">
+                무향, 무취, 저자극을 지향하는 고급 물티슈로 위생적이고 안전한 사용감을 제공합니다.
+              </p>
+            </div>
+
+            <div class="product-tag">Wet Tissue</div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">TAE PYEONG PAPER</div>
+      <div class="page-no">07</div>
+    </footer>
+
+  </section>
+
+</body>
+</html>
