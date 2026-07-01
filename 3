@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Taepyung Company Profile - 03</title>
+
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    :root {
+      --green: #387040;
+      --light-green: #70C088;
+      --cream: #F7F5EF;
+      --black: #111111;
+      --gray: #777777;
+      --line: rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+      background: #d9d9d9;
+      color: var(--black);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      position: relative;
+      width: 297mm;
+      height: 210mm;
+      margin: 0 auto;
+      padding: 20mm 22mm 16mm;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 14mm;
+      margin-bottom: 18mm;
+    }
+
+    .logo-area {
+      width: 42mm;
+      height: 12mm;
+      border: 1px dashed rgba(56, 112, 64, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .logo-area img {
+      width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .doc-label {
+      padding-top: 1mm;
+      font-size: 8px;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    /* Main Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 0.88fr 1.12fr;
+      gap: 22mm;
+      height: 128mm;
+    }
+
+    .left,
+    .right {
+      min-width: 0;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 8.5px;
+      line-height: 1;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 9mm;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: -0.065em;
+      font-weight: 760;
+    }
+
+    .lead {
+      margin-top: 12mm;
+      max-width: 88mm;
+      font-size: 13px;
+      line-height: 1.85;
+      letter-spacing: -0.035em;
+      color: #222;
+      word-break: keep-all;
+    }
+
+    .story-copy {
+      margin-top: 7mm;
+      max-width: 90mm;
+      font-size: 10.8px;
+      line-height: 1.8;
+      letter-spacing: -0.025em;
+      color: #4a4a4a;
+      word-break: keep-all;
+    }
+
+    /* Bottom Quote */
+    .quote-box {
+      width: 86mm;
+      border-top: 1.5px solid var(--green);
+      padding-top: 5.5mm;
+    }
+
+    .quote-year {
+      font-size: 26px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--green);
+      font-weight: 780;
+      margin-bottom: 4mm;
+    }
+
+    .quote-text {
+      max-width: 74mm;
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* Visual */
+    .visual-wrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: rgba(56, 112, 64, 0.1);
+      border: 1px solid rgba(56, 112, 64, 0.16);
+      overflow: hidden;
+    }
+
+    .visual-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .visual-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(56, 112, 64, 0.72);
+      font-size: 8px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .visual-caption {
+      position: absolute;
+      left: 7mm;
+      bottom: 7mm;
+      width: calc(100% - 14mm);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 4mm;
+      border-top: 1px solid rgba(56, 112, 64, 0.28);
+      color: rgba(56, 112, 64, 0.78);
+    }
+
+    .visual-caption strong {
+      font-size: 13px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      font-weight: 780;
+    }
+
+    .visual-caption span {
+      font-size: 8px;
+      line-height: 1.5;
+      letter-spacing: 0.08em;
+      text-align: right;
+      text-transform: uppercase;
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      left: 22mm;
+      right: 22mm;
+      bottom: 9mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 7.5px;
+      line-height: 1.45;
+      color: var(--gray);
+    }
+
+    .footer-logo {
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--green);
+    }
+
+    .page-no {
+      letter-spacing: 0.08em;
+      color: rgba(56, 112, 64, 0.65);
+    }
+
+    @media print {
+      html,
+      body {
+        width: 297mm;
+        height: 210mm;
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="page">
+
+    <header class="topbar">
+      <div class="logo-area">
+        LOGO
+        <!-- 로고 넣을 때 -->
+        <!-- <img src="assets/taepyung-logo-green.svg" alt="Taepyung"> -->
+      </div>
+
+      <div class="doc-label">
+        Company Profile<br />
+        Ver. 2025-V1
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <section class="left">
+        <div>
+          <div class="eyebrow">Our Beginning</div>
+
+          <h1>
+            작은 시작에서 출발해<br />
+            50년의 제조 신뢰로<br />
+            이어져 왔습니다
+          </h1>
+
+          <p class="lead">
+            1977년, 상계동의 작은 시작에서 출발한 태평제지는
+            정직한 품질로 사람들의 일상을 지켜온 생활 위생지 전문 기업입니다.
+          </p>
+
+          <p class="story-copy">
+            오랜 시간 동안 변하지 않은 기준은 단순합니다.
+            매일 사용하는 제품일수록 더 정직해야 하며,
+            고객의 일상 가까이에 있는 제품일수록 더 안정적인 품질로 공급되어야 한다는 믿음입니다.
+          </p>
+        </div>
+
+        <div class="quote-box">
+          <div class="quote-year">1977</div>
+          <div class="quote-text">
+            상계동 배추밭, 작은 버스에서 시작된 한 가지 약속.
+            태평제지는 오늘도 그 믿음을 이어가고 있습니다.
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+        <div class="visual-wrap">
+          <div class="visual-placeholder">
+            STORY IMAGE AREA
+          </div>
+
+          <!-- 이미지 넣을 때 -->
+          <!-- <img src="assets/company-beginning.jpg" alt="Taepyung Story"> -->
+
+          <div class="visual-caption">
+            <strong>Since 1977</strong>
+            <span>
+              Honest Quality<br />
+              Everyday Trust
+            </span>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">TAE PYEONG PAPER</div>
+      <div class="page-no">03</div>
+    </footer>
+
+  </section>
+
+</body>
+</html>
