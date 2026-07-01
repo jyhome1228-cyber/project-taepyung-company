@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Taepyung Company Profile - 02</title>
+
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    :root {
+      --green: #387040;
+      --light-green: #70C088;
+      --cream: #F7F5EF;
+      --black: #111111;
+      --gray: #777777;
+      --line: rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+      background: #d9d9d9;
+      color: var(--black);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      position: relative;
+      width: 297mm;
+      height: 210mm;
+      margin: 0 auto;
+      padding: 20mm 22mm 16mm;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 14mm;
+      margin-bottom: 18mm;
+    }
+
+    .logo-area {
+      width: 42mm;
+      height: 12mm;
+      border: 1px dashed rgba(56, 112, 64, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .logo-area img {
+      width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .doc-label {
+      padding-top: 1mm;
+      font-size: 8px;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    /* Main Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 22mm;
+      height: 128mm;
+    }
+
+    .left,
+    .right {
+      min-width: 0;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 8.5px;
+      line-height: 1;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 9mm;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: -0.065em;
+      font-weight: 760;
+    }
+
+    .lead {
+      margin-top: 12mm;
+      max-width: 90mm;
+      font-size: 13px;
+      line-height: 1.85;
+      letter-spacing: -0.035em;
+      color: #222;
+      word-break: keep-all;
+    }
+
+    /* Since Block */
+    .since-box {
+      width: 82mm;
+      border-top: 1.5px solid var(--green);
+      padding-top: 5.5mm;
+      margin-bottom: 0;
+    }
+
+    .since {
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--green);
+      font-weight: 780;
+      margin-bottom: 4mm;
+    }
+
+    .since-text {
+      max-width: 68mm;
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* Info Table */
+    .info-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .info-table th,
+    .info-table td {
+      border-bottom: 1px solid var(--line);
+      padding: 3.9mm 0;
+      text-align: left;
+      vertical-align: middle;
+      font-size: 10.4px;
+      line-height: 1.45;
+      letter-spacing: -0.025em;
+      word-break: keep-all;
+    }
+
+    .info-table th {
+      width: 34mm;
+      color: var(--gray);
+      font-weight: 600;
+    }
+
+    .info-table td {
+      color: #222;
+      font-weight: 600;
+    }
+
+    /* Visual Area */
+    .visual-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5mm;
+      height: 30mm;
+      margin-top: 9mm;
+    }
+
+    .visual {
+      background: rgba(56, 112, 64, 0.1);
+      border: 1px solid rgba(56, 112, 64, 0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(56, 112, 64, 0.72);
+      font-size: 8px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      overflow: hidden;
+    }
+
+    .visual.green {
+      background: var(--green);
+      border: none;
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      left: 22mm;
+      right: 22mm;
+      bottom: 9mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 7.5px;
+      line-height: 1.45;
+      color: var(--gray);
+    }
+
+    .footer-logo {
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--green);
+    }
+
+    .page-no {
+      letter-spacing: 0.08em;
+      color: rgba(56, 112, 64, 0.65);
+    }
+
+    @media print {
+      html,
+      body {
+        width: 297mm;
+        height: 210mm;
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="page">
+
+    <header class="topbar">
+      <div class="logo-area">
+        LOGO
+        <!-- 로고 넣을 때 -->
+        <!-- <img src="assets/taepyung-logo-green.svg" alt="Taepyung"> -->
+      </div>
+
+      <div class="doc-label">
+        Company Profile<br />
+        Ver. 2025-V1
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <section class="left">
+        <div>
+          <div class="eyebrow">Company Overview</div>
+
+          <h1>
+            생활 위생지 제조와<br />
+            유통을 기반으로 한<br />
+            전문 기업
+          </h1>
+
+          <p class="lead">
+            태평제지는 1977년 설립 이후 화장지 제조와 유통을 중심으로,
+            일상에 필요한 위생 제품을 안정적으로 공급해온 생활 위생지 전문 기업입니다.
+          </p>
+        </div>
+
+        <div class="since-box">
+          <div class="since">Since 1977</div>
+          <div class="since-text">
+            정직한 품질로 고객의 일상 가까이에서 신뢰를 쌓아왔습니다.
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+
+        <table class="info-table">
+          <tr>
+            <th>회사명</th>
+            <td>태평제지</td>
+          </tr>
+          <tr>
+            <th>설립일자</th>
+            <td>1977년 3월</td>
+          </tr>
+          <tr>
+            <th>사업분야</th>
+            <td>화장지 제조/유통, 청소용품 도소매</td>
+          </tr>
+          <tr>
+            <th>브랜드</th>
+            <td>브론디 blondy</td>
+          </tr>
+          <tr>
+            <th>대표이사</th>
+            <td>이정욱</td>
+          </tr>
+          <tr>
+            <th>소재지</th>
+            <td>경기도 이천시 마장면 마도로 223번길 22</td>
+          </tr>
+          <tr>
+            <th>홈페이지</th>
+            <td>www.blondy.co.kr</td>
+          </tr>
+        </table>
+
+        <div class="visual-row">
+          <div class="visual">
+            IMAGE AREA
+            <!-- 이미지 넣을 때 -->
+            <!-- <img src="assets/company-image.jpg" alt=""> -->
+          </div>
+
+          <div class="visual green">
+            BRAND COLOR
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">TAE PYEONG PAPER</div>
+      <div class="page-no">02</div>
+    </footer>
+
+  </section>
+
+</body>
+</html>
