@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Taepyung Company Profile - 05</title>
+
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    :root {
+      --green: #387040;
+      --light-green: #70C088;
+      --cream: #F7F5EF;
+      --black: #111111;
+      --gray: #777777;
+      --line: rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+      background: #d9d9d9;
+      color: var(--black);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      position: relative;
+      width: 297mm;
+      height: 210mm;
+      margin: 0 auto;
+      padding: 20mm 22mm 16mm;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 14mm;
+      margin-bottom: 18mm;
+    }
+
+    .logo-area {
+      width: 42mm;
+      height: 12mm;
+      border: 1px dashed rgba(56, 112, 64, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .logo-area img {
+      width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .doc-label {
+      padding-top: 1mm;
+      font-size: 8px;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    /* Main Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 22mm;
+      height: 128mm;
+    }
+
+    .left,
+    .right {
+      min-width: 0;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 8.5px;
+      line-height: 1;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 9mm;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: -0.065em;
+      font-weight: 760;
+    }
+
+    .lead {
+      margin-top: 12mm;
+      max-width: 84mm;
+      font-size: 13px;
+      line-height: 1.85;
+      letter-spacing: -0.035em;
+      color: #222;
+      word-break: keep-all;
+    }
+
+    /* Bottom Summary */
+    .summary-box {
+      width: 82mm;
+      border-top: 1.5px solid var(--green);
+      padding-top: 5.5mm;
+    }
+
+    .summary-title {
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--green);
+      font-weight: 780;
+      margin-bottom: 4mm;
+    }
+
+    .summary-text {
+      max-width: 70mm;
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* Business Cards */
+    .business-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 5mm;
+      margin-bottom: 8mm;
+    }
+
+    .business-card {
+      min-height: 45mm;
+      padding: 7mm;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .business-card.primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: #fff;
+    }
+
+    .business-index {
+      font-size: 8px;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 8mm;
+    }
+
+    .business-card.primary .business-index {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .business-title {
+      margin: 0 0 4mm;
+      font-size: 17px;
+      line-height: 1.15;
+      letter-spacing: -0.055em;
+      font-weight: 760;
+    }
+
+    .business-desc {
+      margin: 0;
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    .business-card.primary .business-desc {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    /* Structure Bar */
+    .structure {
+      display: grid;
+      grid-template-columns: 1fr 14mm 1fr 14mm 1fr;
+      align-items: center;
+      height: 30mm;
+      padding: 0 6mm;
+      background: rgba(56, 112, 64, 0.08);
+      border: 1px solid rgba(56, 112, 64, 0.16);
+    }
+
+    .structure-item {
+      text-align: center;
+    }
+
+    .structure-label {
+      font-size: 8px;
+      line-height: 1;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 3mm;
+    }
+
+    .structure-text {
+      font-size: 10px;
+      line-height: 1.45;
+      letter-spacing: -0.025em;
+      color: #222;
+      font-weight: 650;
+      word-break: keep-all;
+    }
+
+    .arrow {
+      width: 100%;
+      height: 1px;
+      background: rgba(56, 112, 64, 0.45);
+      position: relative;
+    }
+
+    .arrow::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 5px;
+      height: 5px;
+      border-top: 1px solid rgba(56, 112, 64, 0.55);
+      border-right: 1px solid rgba(56, 112, 64, 0.55);
+      transform: translateY(-50%) rotate(45deg);
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      left: 22mm;
+      right: 22mm;
+      bottom: 9mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 7.5px;
+      line-height: 1.45;
+      color: var(--gray);
+    }
+
+    .footer-logo {
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--green);
+    }
+
+    .page-no {
+      letter-spacing: 0.08em;
+      color: rgba(56, 112, 64, 0.65);
+    }
+
+    @media print {
+      html,
+      body {
+        width: 297mm;
+        height: 210mm;
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="page">
+
+    <header class="topbar">
+      <div class="logo-area">
+        LOGO
+        <!-- 로고 넣을 때 -->
+        <!-- <img src="assets/taepyung-logo-green.svg" alt="Taepyung"> -->
+      </div>
+
+      <div class="doc-label">
+        Company Profile<br />
+        Ver. 2025-V1
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <section class="left">
+        <div>
+          <div class="eyebrow">Business Area</div>
+
+          <h1>
+            제조, 유통,<br />
+            브랜드 운영을 연결하는<br />
+            생활 위생지 비즈니스
+          </h1>
+
+          <p class="lead">
+            태평제지는 생활 위생지 제조 역량을 기반으로 B2B 납품과
+            B2C 온라인 판매 채널을 함께 운영하며, 브론디 브랜드를 통해
+            소비자 접점을 확장하고 있습니다.
+          </p>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-title">Integrated</div>
+          <div class="summary-text">
+            제품 생산부터 유통, 브랜드 운영, 고객 접점까지
+            하나의 흐름으로 연결된 운영 구조를 갖추고 있습니다.
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+
+        <div class="business-grid">
+
+          <div class="business-card primary">
+            <div>
+              <div class="business-index">01</div>
+              <h3 class="business-title">Manufacturing</h3>
+            </div>
+            <p class="business-desc">
+              두루마리 화장지, 점보롤, 페이퍼타올, 키친타올 등
+              생활 위생지 제품군을 제조합니다.
+            </p>
+          </div>
+
+          <div class="business-card">
+            <div>
+              <div class="business-index">02</div>
+              <h3 class="business-title">Distribution</h3>
+            </div>
+            <p class="business-desc">
+              공공기관, 기업, 대량 납품 등 다양한 수요처에
+              안정적으로 제품을 공급합니다.
+            </p>
+          </div>
+
+          <div class="business-card">
+            <div>
+              <div class="business-index">03</div>
+              <h3 class="business-title">Brand</h3>
+            </div>
+            <p class="business-desc">
+              생활 위생지 브랜드 브론디를 중심으로
+              제품 경험과 브랜드 인지도를 확장합니다.
+            </p>
+          </div>
+
+          <div class="business-card">
+            <div>
+              <div class="business-index">04</div>
+              <h3 class="business-title">Online Channel</h3>
+            </div>
+            <p class="business-desc">
+              쿠팡, 네이버, 카카오 등 온라인 채널을 통해
+              소비자 접점을 강화하고 있습니다.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="structure">
+          <div class="structure-item">
+            <div class="structure-label">Produce</div>
+            <div class="structure-text">제품 제조</div>
+          </div>
+
+          <div class="arrow"></div>
+
+          <div class="structure-item">
+            <div class="structure-label">Supply</div>
+            <div class="structure-text">납품 · 유통</div>
+          </div>
+
+          <div class="arrow"></div>
+
+          <div class="structure-item">
+            <div class="structure-label">Connect</div>
+            <div class="structure-text">브랜드 · 고객 접점</div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">TAE PYEONG PAPER</div>
+      <div class="page-no">05</div>
+    </footer>
+
+  </section>
+
+</body>
+</html>
