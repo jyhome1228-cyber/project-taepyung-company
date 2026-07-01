@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Taepyung Company Profile - 11</title>
+
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    :root {
+      --green: #387040;
+      --light-green: #70C088;
+      --cream: #F7F5EF;
+      --black: #111111;
+      --gray: #777777;
+      --line: rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+      background: #d9d9d9;
+      color: var(--black);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      position: relative;
+      width: 297mm;
+      height: 210mm;
+      margin: 0 auto;
+      padding: 20mm 22mm 16mm;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 14mm;
+      margin-bottom: 18mm;
+    }
+
+    .logo-area {
+      width: 42mm;
+      height: 12mm;
+      border: 1px dashed rgba(56, 112, 64, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .logo-area img {
+      width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .doc-label {
+      padding-top: 1mm;
+      font-size: 8px;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    /* Main Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 20mm;
+      height: 128mm;
+    }
+
+    .left,
+    .right {
+      min-width: 0;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 8.5px;
+      line-height: 1;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 9mm;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: -0.065em;
+      font-weight: 760;
+    }
+
+    .lead {
+      margin-top: 12mm;
+      max-width: 82mm;
+      font-size: 13px;
+      line-height: 1.85;
+      letter-spacing: -0.035em;
+      color: #222;
+      word-break: keep-all;
+    }
+
+    .summary-box {
+      width: 82mm;
+      border-top: 1.5px solid var(--green);
+      padding-top: 5.5mm;
+    }
+
+    .summary-title {
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--green);
+      font-weight: 780;
+      margin-bottom: 4mm;
+    }
+
+    .summary-text {
+      max-width: 70mm;
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* Quality Hero */
+    .quality-hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 5mm;
+      height: 44mm;
+      margin-bottom: 5mm;
+    }
+
+    .quality-panel {
+      padding: 6mm;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .quality-label {
+      font-size: 7.5px;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .quality-title {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.15;
+      letter-spacing: -0.06em;
+      font-weight: 780;
+      word-break: keep-all;
+    }
+
+    .quality-desc {
+      margin: 0;
+      font-size: 9.5px;
+      line-height: 1.65;
+      letter-spacing: -0.025em;
+      color: rgba(255, 255, 255, 0.78);
+      word-break: keep-all;
+    }
+
+    .quality-image {
+      position: relative;
+      background: rgba(56, 112, 64, 0.1);
+      border: 1px solid rgba(56, 112, 64, 0.16);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(56, 112, 64, 0.72);
+      font-size: 8px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .quality-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Certification Grid */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5mm;
+      height: 42mm;
+      margin-bottom: 5mm;
+    }
+
+    .cert-card {
+      padding: 5.5mm;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .cert-card.primary {
+      background: rgba(56, 112, 64, 0.08);
+      border-color: rgba(56, 112, 64, 0.18);
+    }
+
+    .cert-mark {
+      width: 18mm;
+      height: 18mm;
+      border: 1px dashed rgba(56, 112, 64, 0.32);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 6.5px;
+      letter-spacing: 0.12em;
+      color: rgba(56, 112, 64, 0.7);
+      text-transform: uppercase;
+      overflow: hidden;
+    }
+
+    .cert-mark img {
+      max-width: 82%;
+      max-height: 82%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .cert-title {
+      margin: 5mm 0 2.5mm;
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: -0.05em;
+      color: #111;
+      font-weight: 760;
+      word-break: keep-all;
+    }
+
+    .cert-desc {
+      margin: 0;
+      font-size: 8.8px;
+      line-height: 1.55;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* QC Process */
+    .qc-area {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5mm;
+      height: 37mm;
+      padding: 5mm;
+      background: rgba(56, 112, 64, 0.08);
+      border: 1px solid rgba(56, 112, 64, 0.16);
+    }
+
+    .qc-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid rgba(56, 112, 64, 0.16);
+      padding-right: 5mm;
+    }
+
+    .qc-item:last-child {
+      border-right: 0;
+      padding-right: 0;
+    }
+
+    .qc-index {
+      font-size: 7.5px;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .qc-title {
+      margin: 0;
+      font-size: 13.5px;
+      line-height: 1.25;
+      letter-spacing: -0.05em;
+      color: #111;
+      font-weight: 760;
+      word-break: keep-all;
+    }
+
+    .qc-desc {
+      margin: 0;
+      font-size: 8.8px;
+      line-height: 1.55;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      left: 22mm;
+      right: 22mm;
+      bottom: 9mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 7.5px;
+      line-height: 1.45;
+      color: var(--gray);
+    }
+
+    .footer-logo {
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--green);
+    }
+
+    .page-no {
+      letter-spacing: 0.08em;
+      color: rgba(56, 112, 64, 0.65);
+    }
+
+    @media print {
+      html,
+      body {
+        width: 297mm;
+        height: 210mm;
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="page">
+
+    <header class="topbar">
+      <div class="logo-area">
+        LOGO
+        <!-- 로고 넣을 때 -->
+        <!-- <img src="assets/taepyung-logo-green.svg" alt="Taepyung"> -->
+      </div>
+
+      <div class="doc-label">
+        Company Profile<br />
+        Ver. 2025-V1
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <section class="left">
+        <div>
+          <div class="eyebrow">Quality Management</div>
+
+          <h1>
+            품질 관리와 인증을 통해<br />
+            제품 신뢰도를<br />
+            높여갑니다
+          </h1>
+
+          <p class="lead">
+            태평제지는 품질 관리실과 전담 인력을 기반으로
+            제품 검수 프로세스를 운영하며, 주요 품질·환경 인증을 통해
+            제품과 제조 환경의 신뢰도를 강화하고 있습니다.
+          </p>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-title">Certified</div>
+          <div class="summary-text">
+            품질경영, 환경경영, 제품 인증과 정기적인 QC 활동을 통해
+            안정적인 제품 품질을 유지합니다.
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+
+        <div class="quality-hero">
+          <div class="quality-panel">
+            <div class="quality-label">Quality Control</div>
+
+            <h3 class="quality-title">
+              사내 품질 관리 체계와<br />
+              정기적인 QC 활동
+            </h3>
+
+            <p class="quality-desc">
+              품질 관리실과 품질 관리 전담 직원이 제품 검수 프로세스를 기반으로
+              정기적인 품질 관리 활동을 수행합니다.
+            </p>
+          </div>
+
+          <div class="quality-image">
+            QC IMAGE
+            <!-- <img src="assets/quality-control.jpg" alt="품질 관리"> -->
+          </div>
+        </div>
+
+        <div class="cert-grid">
+
+          <div class="cert-card primary">
+            <div class="cert-mark">
+              ISO
+              <!-- <img src="assets/cert-iso-9001.png" alt="ISO 9001"> -->
+            </div>
+
+            <div>
+              <h3 class="cert-title">ISO 9001</h3>
+              <p class="cert-desc">
+                품질경영시스템 인증을 통해 품질 관리 기준을 갖추고 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-mark">
+              ISO
+              <!-- <img src="assets/cert-iso-14001.png" alt="ISO 14001"> -->
+            </div>
+
+            <div>
+              <h3 class="cert-title">ISO 14001</h3>
+              <p class="cert-desc">
+                환경경영시스템 인증을 통해 제조 환경의 책임 기준을 강화합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-mark">
+              Q
+              <!-- <img src="assets/cert-qmark.png" alt="Q마크"> -->
+            </div>
+
+            <div>
+              <h3 class="cert-title">Q마크</h3>
+              <p class="cert-desc">
+                제품 품질에 대한 신뢰를 보여주는 품질 인증을 보유하고 있습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="cert-card">
+            <div class="cert-mark">
+              ECO
+              <!-- <img src="assets/cert-eco-label.png" alt="환경마크"> -->
+            </div>
+
+            <div>
+              <h3 class="cert-title">환경마크</h3>
+              <p class="cert-desc">
+                환경 기준을 고려한 제품 운영과 품질 기준을 이어갑니다.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="qc-area">
+
+          <div class="qc-item">
+            <div class="qc-index">01</div>
+            <h3 class="qc-title">품질 관리실 보유</h3>
+            <p class="qc-desc">
+              사내 품질 관리실을 기반으로 제품 검수와 품질 기준을 관리합니다.
+            </p>
+          </div>
+
+          <div class="qc-item">
+            <div class="qc-index">02</div>
+            <h3 class="qc-title">전담 직원 운영</h3>
+            <p class="qc-desc">
+              품질 관리 전담 인력이 생산 및 제품 품질을 지속적으로 점검합니다.
+            </p>
+          </div>
+
+          <div class="qc-item">
+            <div class="qc-index">03</div>
+            <h3 class="qc-title">정기 QC 활동</h3>
+            <p class="qc-desc">
+              품질 검수 프로세스를 적용하여 정기적인 QC 활동을 수행합니다.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">TAE PYEONG PAPER</div>
+      <div class="page-no">11</div>
+    </footer>
+
+  </section>
+
+</body>
+</html>
