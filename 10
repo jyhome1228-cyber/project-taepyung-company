@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Taepyung Company Profile - 10</title>
+
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    :root {
+      --green: #387040;
+      --light-green: #70C088;
+      --cream: #F7F5EF;
+      --black: #111111;
+      --gray: #777777;
+      --line: rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+      background: #d9d9d9;
+      color: var(--black);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      position: relative;
+      width: 297mm;
+      height: 210mm;
+      margin: 0 auto;
+      padding: 20mm 22mm 16mm;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 14mm;
+      margin-bottom: 18mm;
+    }
+
+    .logo-area {
+      width: 42mm;
+      height: 12mm;
+      border: 1px dashed rgba(56, 112, 64, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .logo-area img {
+      width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .doc-label {
+      padding-top: 1mm;
+      font-size: 8px;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    /* Main Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 20mm;
+      height: 128mm;
+    }
+
+    .left,
+    .right {
+      min-width: 0;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 8.5px;
+      line-height: 1;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 9mm;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: -0.065em;
+      font-weight: 760;
+    }
+
+    .lead {
+      margin-top: 12mm;
+      max-width: 82mm;
+      font-size: 13px;
+      line-height: 1.85;
+      letter-spacing: -0.035em;
+      color: #222;
+      word-break: keep-all;
+    }
+
+    .summary-box {
+      width: 82mm;
+      border-top: 1.5px solid var(--green);
+      padding-top: 5.5mm;
+    }
+
+    .summary-title {
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--green);
+      font-weight: 780;
+      margin-bottom: 4mm;
+    }
+
+    .summary-text {
+      max-width: 70mm;
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* Facility Visual */
+    .facility-hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 5mm;
+      height: 47mm;
+      margin-bottom: 5mm;
+    }
+
+    .facility-image {
+      position: relative;
+      background: rgba(56, 112, 64, 0.1);
+      border: 1px solid rgba(56, 112, 64, 0.16);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(56, 112, 64, 0.72);
+      font-size: 8px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .facility-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .facility-info {
+      padding: 6mm;
+      background: var(--green);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .facility-label {
+      font-size: 7.5px;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .facility-title {
+      margin: 0;
+      font-size: 20px;
+      line-height: 1.15;
+      letter-spacing: -0.06em;
+      font-weight: 780;
+      word-break: keep-all;
+    }
+
+    .facility-desc {
+      margin: 0;
+      font-size: 9.5px;
+      line-height: 1.65;
+      letter-spacing: -0.025em;
+      color: rgba(255, 255, 255, 0.78);
+      word-break: keep-all;
+    }
+
+    /* Equipment Cards */
+    .equipment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5mm;
+      height: 42mm;
+      margin-bottom: 5mm;
+    }
+
+    .equipment-card {
+      padding: 6mm;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .equipment-label {
+      font-size: 7.5px;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      color: var(--green);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .equipment-title {
+      margin: 5mm 0 3mm;
+      font-size: 15.5px;
+      line-height: 1.2;
+      letter-spacing: -0.055em;
+      font-weight: 760;
+      word-break: keep-all;
+    }
+
+    .equipment-desc {
+      margin: 0;
+      font-size: 9.2px;
+      line-height: 1.6;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    .equipment-count {
+      margin-top: 4mm;
+      padding-top: 3mm;
+      border-top: 1px solid rgba(56, 112, 64, 0.18);
+      font-size: 8.2px;
+      line-height: 1;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    /* Operation System */
+    .operation-area {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 5mm;
+      height: 34mm;
+      padding: 5mm;
+      background: rgba(56, 112, 64, 0.08);
+      border: 1px solid rgba(56, 112, 64, 0.16);
+    }
+
+    .operation-item {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 1px solid rgba(56, 112, 64, 0.16);
+      padding-right: 5mm;
+    }
+
+    .operation-item:last-child {
+      border-right: 0;
+      padding-right: 0;
+    }
+
+    .operation-index {
+      font-size: 7.5px;
+      line-height: 1;
+      letter-spacing: 0.16em;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .operation-title {
+      margin: 0;
+      font-size: 13.5px;
+      line-height: 1.25;
+      letter-spacing: -0.05em;
+      color: #111;
+      font-weight: 760;
+      word-break: keep-all;
+    }
+
+    .operation-desc {
+      margin: 0;
+      font-size: 8.8px;
+      line-height: 1.55;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      left: 22mm;
+      right: 22mm;
+      bottom: 9mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 7.5px;
+      line-height: 1.45;
+      color: var(--gray);
+    }
+
+    .footer-logo {
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--green);
+    }
+
+    .page-no {
+      letter-spacing: 0.08em;
+      color: rgba(56, 112, 64, 0.65);
+    }
+
+    @media print {
+      html,
+      body {
+        width: 297mm;
+        height: 210mm;
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="page">
+
+    <header class="topbar">
+      <div class="logo-area">
+        LOGO
+        <!-- 로고 넣을 때 -->
+        <!-- <img src="assets/taepyung-logo-green.svg" alt="Taepyung"> -->
+      </div>
+
+      <div class="doc-label">
+        Company Profile<br />
+        Ver. 2025-V1
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <section class="left">
+        <div>
+          <div class="eyebrow">Production System</div>
+
+          <h1>
+            전 공정 자동화 설비로<br />
+            안정적인 생산 시스템을<br />
+            구축했습니다
+          </h1>
+
+          <p class="lead">
+            태평제지는 2022년 12월 이천 공장 이전과 함께
+            전 공정 완전 자동화 설비로 교체하며 생산 안정성과 운영 효율성을 강화했습니다.
+          </p>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-title">Automated</div>
+          <div class="summary-text">
+            주요 생산라인의 자동화 설비와 물류 운영 체계를 바탕으로
+            전국 공급에 대응할 수 있는 생산 기반을 갖추고 있습니다.
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+
+        <div class="facility-hero">
+          <div class="facility-image">
+            FACTORY IMAGE
+            <!-- <img src="assets/factory.jpg" alt="이천 공장"> -->
+          </div>
+
+          <div class="facility-info">
+            <div class="facility-label">Icheon Factory</div>
+
+            <h3 class="facility-title">
+              이천 공장 이전과 함께<br />
+              생산라인 자동화 구축
+            </h3>
+
+            <p class="facility-desc">
+              공장 이전을 계기로 생산 설비를 정비하고,
+              주요 제품군의 안정적인 제조를 위한 자동화 기반을 마련했습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="equipment-grid">
+
+          <div class="equipment-card">
+            <div>
+              <div class="equipment-label">Line 01</div>
+              <h3 class="equipment-title">두루마리 화장지 설비</h3>
+              <p class="equipment-desc">
+                로그와인더, 커팅기, 오버래핑기, 케이스패커 등 생산 공정 설비 보유
+              </p>
+            </div>
+            <div class="equipment-count">장폭 1대</div>
+          </div>
+
+          <div class="equipment-card">
+            <div>
+              <div class="equipment-label">Line 02</div>
+              <h3 class="equipment-title">점보롤 설비</h3>
+              <p class="equipment-desc">
+                점보롤 M/C, 점보롤 포장기, 파렛타이즈 듀얼형 등 대용량 제품 생산 설비 보유
+              </p>
+            </div>
+            <div class="equipment-count">장폭 2대</div>
+          </div>
+
+          <div class="equipment-card">
+            <div>
+              <div class="equipment-label">Line 03</div>
+              <h3 class="equipment-title">페이퍼타올 설비</h3>
+              <p class="equipment-desc">
+                인터폴더, 엠보싱, 커팅기, 포장기 등 페이퍼타올 생산 공정 설비 보유
+              </p>
+            </div>
+            <div class="equipment-count">장폭 2대</div>
+          </div>
+
+        </div>
+
+        <div class="operation-area">
+
+          <div class="operation-item">
+            <div class="operation-index">01</div>
+            <h3 class="operation-title">실시간 재고 파악</h3>
+            <p class="operation-desc">
+              입·출고 흐름을 관리하며 안정적인 공급을 지원합니다.
+            </p>
+          </div>
+
+          <div class="operation-item">
+            <div class="operation-index">02</div>
+            <h3 class="operation-title">전국 배송 체계</h3>
+            <p class="operation-desc">
+              전국 어디든 빠르게 배송할 수 있는 물류 체계를 운영합니다.
+            </p>
+          </div>
+
+          <div class="operation-item">
+            <div class="operation-index">03</div>
+            <h3 class="operation-title">최적 배차 운영</h3>
+            <p class="operation-desc">
+              합배송 등 효율적인 배차를 통해 물류비 최적화를 추구합니다.
+            </p>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">TAE PYEONG PAPER</div>
+      <div class="page-no">10</div>
+    </footer>
+
+  </section>
+
+</body>
+</html>
