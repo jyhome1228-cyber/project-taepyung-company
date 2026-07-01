@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Taepyung Company Profile - 04</title>
+
+  <style>
+    @page {
+      size: A4 landscape;
+      margin: 0;
+    }
+
+    :root {
+      --green: #387040;
+      --light-green: #70C088;
+      --cream: #F7F5EF;
+      --black: #111111;
+      --gray: #777777;
+      --line: rgba(0, 0, 0, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Pretendard, -apple-system, BlinkMacSystemFont, "Noto Sans KR", sans-serif;
+      background: #d9d9d9;
+      color: var(--black);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      position: relative;
+      width: 297mm;
+      height: 210mm;
+      margin: 0 auto;
+      padding: 20mm 22mm 16mm;
+      background: var(--cream);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      height: 14mm;
+      margin-bottom: 18mm;
+    }
+
+    .logo-area {
+      width: 42mm;
+      height: 12mm;
+      border: 1px dashed rgba(56, 112, 64, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 8px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .logo-area img {
+      width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .doc-label {
+      padding-top: 1mm;
+      font-size: 8px;
+      line-height: 1.55;
+      letter-spacing: 0.06em;
+      color: var(--gray);
+      text-align: right;
+    }
+
+    /* Main Layout */
+    .layout {
+      display: grid;
+      grid-template-columns: 0.82fr 1.18fr;
+      gap: 22mm;
+      height: 128mm;
+    }
+
+    .left,
+    .right {
+      min-width: 0;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .eyebrow {
+      font-size: 8.5px;
+      line-height: 1;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 9mm;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.16;
+      letter-spacing: -0.065em;
+      font-weight: 760;
+    }
+
+    .lead {
+      margin-top: 12mm;
+      max-width: 84mm;
+      font-size: 13px;
+      line-height: 1.85;
+      letter-spacing: -0.035em;
+      color: #222;
+      word-break: keep-all;
+    }
+
+    /* Summary Block */
+    .summary-box {
+      width: 82mm;
+      border-top: 1.5px solid var(--green);
+      padding-top: 5.5mm;
+    }
+
+    .summary-title {
+      font-size: 25px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--green);
+      font-weight: 780;
+      margin-bottom: 4mm;
+    }
+
+    .summary-text {
+      max-width: 70mm;
+      font-size: 10px;
+      line-height: 1.7;
+      letter-spacing: -0.025em;
+      color: #444;
+      word-break: keep-all;
+    }
+
+    /* Timeline */
+    .timeline {
+      width: 100%;
+      border-top: 1px solid var(--line);
+    }
+
+    .history-item {
+      display: grid;
+      grid-template-columns: 28mm 1fr;
+      gap: 8mm;
+      padding: 5mm 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .year {
+      font-size: 21px;
+      line-height: 1;
+      letter-spacing: -0.055em;
+      color: var(--green);
+      font-weight: 780;
+    }
+
+    .history-content {
+      padding-top: 0.5mm;
+    }
+
+    .history-title {
+      margin: 0 0 2mm;
+      font-size: 12.5px;
+      line-height: 1.4;
+      letter-spacing: -0.035em;
+      color: #111;
+      font-weight: 720;
+      word-break: keep-all;
+    }
+
+    .history-desc {
+      margin: 0;
+      font-size: 9.8px;
+      line-height: 1.65;
+      letter-spacing: -0.025em;
+      color: #555;
+      word-break: keep-all;
+    }
+
+    .highlight {
+      color: var(--green);
+      font-weight: 720;
+    }
+
+    /* Footer */
+    .footer {
+      position: absolute;
+      left: 22mm;
+      right: 22mm;
+      bottom: 9mm;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 7.5px;
+      line-height: 1.45;
+      color: var(--gray);
+    }
+
+    .footer-logo {
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--green);
+    }
+
+    .page-no {
+      letter-spacing: 0.08em;
+      color: rgba(56, 112, 64, 0.65);
+    }
+
+    @media print {
+      html,
+      body {
+        width: 297mm;
+        height: 210mm;
+        background: #fff;
+      }
+
+      .page {
+        margin: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="page">
+
+    <header class="topbar">
+      <div class="logo-area">
+        LOGO
+        <!-- 로고 넣을 때 -->
+        <!-- <img src="assets/taepyung-logo-green.svg" alt="Taepyung"> -->
+      </div>
+
+      <div class="doc-label">
+        Company Profile<br />
+        Ver. 2025-V1
+      </div>
+    </header>
+
+    <main class="layout">
+
+      <section class="left">
+        <div>
+          <div class="eyebrow">History</div>
+
+          <h1>
+            품질과 납품 신뢰를<br />
+            기반으로 지속 성장해온<br />
+            태평제지의 연혁
+          </h1>
+
+          <p class="lead">
+            태평제지는 1977년 설립 이후 제조 기반과 품질 관리 역량을 쌓아오며,
+            공공 납품과 온라인 판매 채널까지 사업 영역을 확장해왔습니다.
+          </p>
+        </div>
+
+        <div class="summary-box">
+          <div class="summary-title">50 Years</div>
+          <div class="summary-text">
+            제조 경험, 납품 이력, 품질 인증, 자동화 설비 구축을 통해
+            생활 위생지 전문 기업으로 성장해왔습니다.
+          </div>
+        </div>
+      </section>
+
+      <section class="right">
+
+        <div class="timeline">
+
+          <div class="history-item">
+            <div class="year">1977</div>
+            <div class="history-content">
+              <h3 class="history-title">서울 상계동 크로바 화장지 설립</h3>
+              <p class="history-desc">
+                생활 위생지 제조의 시작점이 된 창업 시기입니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div class="year">1980</div>
+            <div class="history-content">
+              <h3 class="history-title">태평제지 회사명 변경</h3>
+              <p class="history-desc">
+                현재의 사명으로 변경하며 제조 기업으로서의 기반을 다졌습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div class="year">1989</div>
+            <div class="history-content">
+              <h3 class="history-title">조달청 납품 계약</h3>
+              <p class="history-desc">
+                공공 납품을 통해 제품 공급 신뢰도를 확대했습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div class="year">1995</div>
+            <div class="history-content">
+              <h3 class="history-title">두루마리화장지 환경마크 최초 획득</h3>
+              <p class="history-desc">
+                35m, 50m, 70m 두루마리화장지 제품군에서 환경마크를 획득했습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div class="year">2000</div>
+            <div class="history-content">
+              <h3 class="history-title">전제품 환경마크 획득</h3>
+              <p class="history-desc">
+                제품 전반의 품질과 환경 기준을 강화했습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div class="year">2021</div>
+            <div class="history-content">
+              <h3 class="history-title">온라인 판매 채널 강화</h3>
+              <p class="history-desc">
+                쿠팡, 네이버, 카카오 입점 등 소비자 접점을 확대했습니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="history-item">
+            <div class="year">2022</div>
+            <div class="history-content">
+              <h3 class="history-title">이천 공장 이전 및 자동화 설비 구축</h3>
+              <p class="history-desc">
+                경기도 이천 공장 이전과 함께 <span class="highlight">전 생산라인 자동화 설비</span>를 구축했습니다.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <div class="footer-logo">TAE PYEONG PAPER</div>
+      <div class="page-no">04</div>
+    </footer>
+
+  </section>
+
+</body>
+</html>
